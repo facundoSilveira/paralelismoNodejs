@@ -11,9 +11,12 @@ const httpServer = createServer((req, res) => {
 
 httpServer.listen(3000);
 
-worker.postMessage("iniciar");
+//worker.postMessage("iniciar");
 worker.on("message", function(data){
-    console.log("msj recibido desde el parent", data);
+    if (data.msg === "finalizado"){
+        console.log("operacion finalizada", data.data);
+    }
+    
 });
 setInterval(()=> {
     worker.postMessage({msg: "inicializar"});

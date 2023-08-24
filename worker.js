@@ -15,5 +15,5 @@ function operacionCostosa(){
         total += c;
     }
     console.log(" *fin operacion costosa");
-    return total;
+    parentPort.postMessage({ msg:"finalizado", data: total});
 }
